@@ -21,15 +21,15 @@ const Home = () => {
             <button className='btn dark-btn'><img src={info_icon} alt="error" />More Info</button>
           </div>
           <div className="title-card">
-            <TaitleCards/>
+            <TaitleCards title={null} category={null}/>
           </div>
         </div>
       </div>
       <div className="more-cards">
-      <TaitleCards/>
-      <TaitleCards />
-      <TaitleCards/>
-      <TaitleCards />
+      <TaitleCards title='sample' category='andimukk'/>
+      <TaitleCards title='sample' category='andimukk' />
+      <TaitleCards title='sample' category='andimukk'/>
+      <TaitleCards title='sample' category='andimukk' />
       </div>
       <Footer/>
     </div>

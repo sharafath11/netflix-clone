@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import cardData from "../../assets/cards/Cards_data";
 import "./TaitleCarts.css";
 
-const TitleCards = () => {
+const TitleCards = ({title,category}:{title:string |null,category:string|null}) => {
   interface Card {
     image: string;
     movie: string;
@@ -26,7 +26,7 @@ const TitleCards = () => {
 
   return (
     <div className="title-cards">
-      <h2>Popular on Netflix</h2>
+      <h2>{title?title:'Populer on Netflix'}</h2>
       <div className="card-list" ref={cardsRef}>
         {cardData.map((card: Card, index: number) => (
           <div className="card" key={index}>
