@@ -22,7 +22,7 @@ const Home = () => {
             <button className='btn'><img src={play_icon} alt="error" />Play</button>
             <button className='btn dark-btn'><img src={info_icon} alt="error" />More Info</button>
           </div>
-          <div className="title-card">
+          <div className="title-card" style={{position:'fixed'}}>
             <TaitleCards title={null} category={null}/>
           </div>
         </div>

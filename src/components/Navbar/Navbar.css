@@ -58,6 +58,7 @@
     z-index: 1;
     display: none;
 }
+
 .dropdown p{
     font-size: 13px;
     cursor: pointer;

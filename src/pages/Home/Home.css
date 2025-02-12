@@ -58,6 +58,7 @@
 }
 @media (max-width: 1024px) {
     .hero-caption .title-card{
+        position: fixed;
         display:none;
     }
     .hero-btns{
@@ -80,6 +81,7 @@
         width: 20px;
     }
     .more-cards{
+        
         padding-left: 4%;
     }
 } 

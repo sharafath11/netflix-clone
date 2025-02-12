@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import './Login.css';
 import logo from '../../assets/logo.png';
 import netflix_spinner from '../../assets/netflix_spinner.gif';
-import { toast } from "react-toastify";
+
+import { loginUser ,signUpUser} from '../../fireBase';
 
 const Login: React.FC = () => {
   const [signState, setSignState] = useState<string>("Sign In");
@@ -11,6 +12,13 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>("");
 
   const [loading, setLoading] = useState<boolean>(false);
+ async function handleAuth(e:React.FormEvent<HTMLFormElement>):Promise<void>{
+  setLoading(true)
+  e.preventDefault()
+    if(signState==="Sign In") await loginUser(email,password);
+    else await signUpUser(name,email,password)
+    setLoading(false)
+  }
 
   return (
     loading ? 
@@ -22,7 +30,7 @@ const Login: React.FC = () => {
         <img src={logo} alt="" className="login-logo" />
         <div className="login-form">
           <h1>{signState}</h1>
-          <form>
+          <form onSubmit={handleAuth}>
             {signState === 'Sign Up' && <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder='Your name' />}
             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Password' />
