@@ -6,6 +6,7 @@
     margin-bottom: 8px;
 }
 .card-list{
+    height: 200px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;

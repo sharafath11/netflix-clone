@@ -7,7 +7,9 @@ import play_icon from "../../assets/play_icon.png"
 import info_icon from "../../assets/info_icon.png"
 import './Home.css'
 import Footer from '../../components/Footer/Footer'
+
 const Home = () => {
+
   return (
     <div className='home'>
       <Navbar/>
@@ -26,10 +28,10 @@ const Home = () => {
         </div>
       </div>
       <div className="more-cards">
-      <TaitleCards title='sample' category='andimukk'/>
-      <TaitleCards title='sample' category='andimukk' />
-      <TaitleCards title='sample' category='andimukk'/>
-      <TaitleCards title='sample' category='andimukk' />
+      <TaitleCards title={"Popular"} category="popular"/>
+      <TaitleCards title={"Top Rated"} category="top_rated" />
+      <TaitleCards title={"Up Coming"}  category="upcoming"/>
+      {/* <TaitleCards /> */}
       </div>
       <Footer/>
     </div>
