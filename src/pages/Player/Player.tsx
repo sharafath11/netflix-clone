@@ -45,36 +45,46 @@ const Player = () => {
   }, [id]);
 
   return (
-    <div className="player">
+    <>
       {loading ? (
-        <img src={loading_gif} alt="Loading..." />
+       <center> <img src={loading_gif} alt="Loading..." /></center>
       ) : video ? (
-        <div>
-          <img src={back_arrow_icon} alt="back" onClick={() => navigate(-1)} />
-          <iframe
-            width="90%"
-            height="90%"
-            src={`https://www.youtube.com/embed/${video.key}`}
-            title="trailer"
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-          <div className="player-info">
-            <p>
-              {video.published_at &&
-                new Date(video.published_at)
-                  .toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "numeric" })
-                  .replace(/\//g, "-")}
-            </p>
-            <p>{video.name}</p>
-            <p>{video.type}</p>
+        <div className="player">
+          <div>
+            <img
+              src={back_arrow_icon}
+              alt="back"
+              onClick={() => navigate(-1)}
+            />
+            <iframe
+              width="100%" // Ensure the iframe is responsive
+              height="100%" // Make it responsive as well
+              src={`https://www.youtube.com/embed/${video.key}`}
+              title="trailer"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+            <div className="player-info">
+              <p>
+                {video.published_at &&
+                  new Date(video.published_at)
+                    .toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                    .replace(/\//g, "-")}
+              </p>
+              <p>{video.name}</p>
+              <p>{video.type}</p>
+            </div>
           </div>
         </div>
       ) : (
         <p>No Video Available</p>
       )}
-    </div>
+    </>
   );
-};
-
-export default Player;
+}
+  
+export default Player ;

@@ -3,9 +3,10 @@ import './Login.css';
 import logo from '../../assets/logo.png';
 import netflix_spinner from '../../assets/netflix_spinner.gif';
 
-import { loginUser ,signUpUser} from '../../fireBase';
+import { loginUser ,MSG,signUpUser} from '../../fireBase';
 
 const Login: React.FC = () => {
+  console.log("gfhnliugntr",MSG.split)
   const [signState, setSignState] = useState<string>("Sign In");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");  
@@ -34,8 +35,10 @@ const Login: React.FC = () => {
             {signState === 'Sign Up' && <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder='Your name' />}
             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Password' />
-            <button type='submit'>{signState}</button>
+            <p style={{ color: "red" }}>{MSG}</p>
 
+            <button type='submit'>{signState}</button>
+              
             <div className="form-help">
               <div className="remember">
                 <input type="checkbox" />

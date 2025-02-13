@@ -5,6 +5,7 @@ import Player from "./pages/Player/Player"
 import { useEffect, useState } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./fireBase"
+import { ToastContainer } from "react-toastify"
 
 const App = ()=> {
   const navigate=useNavigate()
@@ -19,7 +20,8 @@ const App = ()=> {
   },[navigate])
   return (
     <div>
-      <Routes>
+    <ToastContainer position="top-right" autoClose={3000} />
+        <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/" element={verify?<Home/>:<Login/>}/>
         <Route path="/player/:id" element={verify?<Player/>:<Login/>}/>

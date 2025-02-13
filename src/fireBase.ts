@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, si
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZAPuGTcw-aJmDY0B0raGCoA9JA5UPjPw",
+  apiKey:import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "YOUR_AUTH_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
   storageBucket: "YOUR_STORAGE_BUCKET",
@@ -14,6 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+let MSG:string=""
 const signUpUser = async (name: string, email: string, password: string): Promise<void> => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -24,23 +25,25 @@ const signUpUser = async (name: string, email: string, password: string): Promis
       authProvider: "local",
       email,
     });
-
-    console.log("User created and data added to Firestore.");
+    MSG=""
   } catch (error) {
+     MSG = error.code?.split("/")[1].split("-").join(" ") || "unknown-error";
     console.error("Error signing up:", error);
   }
 };
-const loginUser=async(email:string,password:string):Promise<void>=>{
- try {
-    await signInWithEmailAndPassword(auth,email,password);
-    
- } catch ( err) {
-    console.log(err);
-    
- }
-}
+
+const loginUser = async (email: string, password: string): Promise<void> => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (err: any) {
+    MSG = err.code.split("/")[1].split("-").join(" ") || "unknown-error"; 
+    console.log(MSG); 
+  }
+};
+
 const logoutUser=()=>{
-    signOut(auth)
+    signOut(auth);
+     MSG=""
 }
 
-export { auth, db, signUpUser,loginUser,logoutUser };
+export { auth, db, signUpUser,loginUser,logoutUser,MSG };

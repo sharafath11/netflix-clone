@@ -2,23 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./TaitleCarts.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { MovieInterface } from '../../Interfaces';
 
 const TitleCards = ({title,category}:{title:string|null,category:string|null}) => {
-  interface Movie {
-    id: number;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
-  }
-  console.log(category ,"casdfg")
-  const [movieData,setMovieData]=useState<Movie[]>([])
+
+  const [movieData,setMovieData]=useState<MovieInterface[]>([])
   const url:string = `https://api.themoviedb.org/3/movie/${category?category:"now_playing"}?language=en-US&page=1`;
 const options = {
   method: 'GET',
